@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class RobotMove : MonoBehaviour
 {
-    private float speed = 5f;
+    private float speed;
 
     private Rigidbody rb;
     Jump jump;
-    WakeUp wakeUp;
     private void Awake()
     {
-        wakeUp = GetComponent<WakeUp>();
         jump = GetComponent<Jump>();
         rb = GetComponentInParent<Rigidbody>();
+        speed = Tomato.Instance.defaultSpeed;
         enabled = false;
     }
     private void OnEnable()
