@@ -23,10 +23,6 @@ public class RobotMove : MonoBehaviour
     private void Update()
     {
         PlayerMove();
-        if(Input.GetKeyDown(KeyCode.R) && !wakeUp.warking)
-        {
-            StartCoroutine(wakeUp.WakeUpRotation());
-        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             jump.JumpCheck();
