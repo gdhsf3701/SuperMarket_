@@ -13,8 +13,11 @@ public class CarMove : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        maxSpeed = Tomato.Instance.defaultSpeed * 5;
         enabled = false;
+    }
+    private void Start()
+    {
+        maxSpeed = Tomato.Instance.defaultSpeed * 5;
     }
     private void OnEnable()
     {

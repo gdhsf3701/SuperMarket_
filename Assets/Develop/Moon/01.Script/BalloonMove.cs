@@ -14,8 +14,11 @@ public class BalloonMove : MonoBehaviour
     {
         rb = GetComponentInParent<Rigidbody>();
         player = GetComponent<PlayerMovement>();
-        speed = Tomato.Instance.defaultSpeed * 0.25f;
         enabled = false;
+    }
+    private void Start()
+    {
+        speed = Tomato.Instance.defaultSpeed * 0.25f;
     }
     private void OnEnable()
     {

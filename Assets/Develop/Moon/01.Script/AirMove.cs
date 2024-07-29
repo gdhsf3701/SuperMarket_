@@ -13,13 +13,16 @@ public class AirMove : MonoBehaviour
     {
         RotationX = transform.rotation.x;
         RotationY = transform.rotation.y;
-        speed = Tomato.Instance.defaultSpeed * 2.5f;
         rb = GetComponent<Rigidbody>();
         enabled = false;
     }
     private void OnEnable()
     {
         rb.useGravity = false;
+    }
+    private void Start()
+    {
+        speed = Tomato.Instance.defaultSpeed * 2.5f;
     }
     private void Update()
     {
@@ -43,11 +46,11 @@ public class AirMove : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            RotationY += XYRate;
+            RotationY -= XYRate;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            RotationY -= XYRate;
+            RotationY += XYRate;
         }
     }
     private void RotationMove()

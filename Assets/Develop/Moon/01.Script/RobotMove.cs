@@ -12,8 +12,11 @@ public class RobotMove : MonoBehaviour
     {
         jump = GetComponent<Jump>();
         rb = GetComponentInParent<Rigidbody>();
-        speed = Tomato.Instance.defaultSpeed;
         enabled = false;
+    }
+    private void Start()
+    {
+        speed = Tomato.Instance.defaultSpeed;
     }
     private void OnEnable()
     {

@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponentInParent<Rigidbody>();
         jump = GetComponentInParent<Jump>();
+    }
+    private void Start()
+    {
         speed = Tomato.Instance.defaultSpeed;
     }
     private void OnEnable()
