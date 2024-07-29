@@ -14,6 +14,9 @@ public class AirMove : MonoBehaviour
         RotationX = transform.rotation.x;
         RotationY = transform.rotation.y;
         rb = GetComponent<Rigidbody>();
+    }
+    private void OnEnable()
+    {
         rb.useGravity = false;
     }
     private void Update()
