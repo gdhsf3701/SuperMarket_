@@ -4,21 +4,17 @@ using UnityEngine;
 
 public class RobotMove : MonoBehaviour
 {
-
+    private float speed = 5f;
 
     private Rigidbody rb;
-
-    private bool isGrounded;
-
-    private float speed = 5f;
-    public float jumpForce = 5f;
-
-    public LayerMask groundLayer;
-    public float groundCheckDistance = 0.6f;
-
+    Jump jump;
+    WakeUp wakeUp;
     private void Awake()
     {
+        wakeUp = GetComponent<WakeUp>();
+        jump = GetComponent<Jump>();
         rb = GetComponentInParent<Rigidbody>();
+        enabled = false;
     }
     private void OnEnable()
     {
@@ -27,7 +23,10 @@ public class RobotMove : MonoBehaviour
     private void Update()
     {
         PlayerMove();
-        JumpCheck();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jump.JumpCheck();
+        }
     }
     private void PlayerMove()
     {
@@ -49,17 +48,5 @@ public class RobotMove : MonoBehaviour
         }
 
     }
-    private void JumpCheck()
-    {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer);
-        Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.red);
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
-    }
-    private void Jump()
-    {
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    }
+    
 }
