@@ -13,6 +13,10 @@ public class CarMove : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
+    private void OnEnable()
+    {
+        rb.useGravity = true;
+    }
     private void Update()
     {
         speedChange();
