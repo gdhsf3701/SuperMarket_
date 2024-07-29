@@ -9,9 +9,13 @@ public class CarMove : MonoBehaviour
     float minSpeed = 0f;
     float speedUpDownRate = 0.03f;
     private Rigidbody rb;
+    WakeUp wakeUp;
+
     private void Awake()
     {
+        wakeUp = GetComponent<WakeUp>();
         rb = GetComponent<Rigidbody>();
+        enabled = false;
     }
     private void OnEnable()
     {
@@ -43,6 +47,6 @@ public class CarMove : MonoBehaviour
     }
     private void Move()
     {
-        rb.velocity = transform.forward * speed;
+        transform.position += transform.forward * speed*Time.deltaTime;
     }
 }

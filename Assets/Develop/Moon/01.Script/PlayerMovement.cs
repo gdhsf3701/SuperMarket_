@@ -7,18 +7,13 @@ public class PlayerMovement : MonoBehaviour
 {
 
     private Rigidbody rb;
-
-    private bool isGrounded;
-
     private float speed= 5f;
-    public float jumpForce = 5f;
-
-    public LayerMask groundLayer;
-    public float groundCheckDistance = 0.6f;
+    Jump jump;
 
     private void Awake()
     {
         rb = GetComponentInParent<Rigidbody>();
+        jump = GetComponentInParent<Jump>();
     }
     private void OnEnable()
     {
@@ -27,7 +22,10 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         PlayerMove();
-        JumpCheck();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jump.JumpCheck();
+        }
     }
     private void PlayerMove()
     {
@@ -38,18 +36,5 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position += transform.forward * Time.deltaTime * speed;
         }
-    }
-    private void JumpCheck()
-    {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer);
-        Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.red);
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
-    }
-    private void Jump()
-    {
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 }

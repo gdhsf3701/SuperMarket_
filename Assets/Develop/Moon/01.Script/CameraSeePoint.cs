@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class CameraSeePoint : MonoBehaviour
 {
-    private float turnSpeed=100;
+    public float turnSpeed=100;
+    private void OnEnable()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     void Update()
     {
         float r = Input.GetAxis("Mouse X");

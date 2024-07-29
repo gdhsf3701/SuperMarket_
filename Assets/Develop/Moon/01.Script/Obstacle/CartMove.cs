@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CartMove : MonoBehaviour
 {
-    float speed = 75f;
+    float power = 75f;
     Rigidbody rb;
 
     bool nowarked = true;
@@ -17,7 +17,7 @@ public class CartMove : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        Warning = GetComponentsInChildren<Transform>()[2].gameObject;
+        Warning = GetComponentsInChildren<Transform>()[4].gameObject;
         Warning.SetActive(false);
     }
     private void Update()
@@ -28,7 +28,7 @@ public class CartMove : MonoBehaviour
             {
                 end = true;
                 Warning.SetActive(false);
-                rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+                rb.AddForce(transform.forward * power, ForceMode.Impulse);
             }
             else
             {

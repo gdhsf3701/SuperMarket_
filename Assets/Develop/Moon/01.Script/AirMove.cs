@@ -30,11 +30,11 @@ public class AirMove : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            RotationX += XYRate;
+            RotationX = Mathf.Clamp(RotationX + XYRate,-30,30);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            RotationX -= XYRate;
+            RotationX = Mathf.Clamp(RotationX - XYRate, -30, 30);
         }
     }
     private void YChange()
