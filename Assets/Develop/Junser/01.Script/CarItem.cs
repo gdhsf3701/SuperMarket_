@@ -9,4 +9,8 @@ public class CarItem : ItemScript
         playerLevel.ResetPlayer(GetComponent<MeshFilter>().mesh,resetTime);
         playerLevel.ChangeToCar();
     }
+    protected override void SetPlayer(GameObject other)
+    {
+        gameObject.SetActive(false);
+    }
 }

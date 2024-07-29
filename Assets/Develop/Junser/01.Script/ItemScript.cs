@@ -16,7 +16,7 @@ public class ItemScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             SetPlayer(other.gameObject);
-            playerLevel = other.GetComponent<Change>();
+            playerLevel = other.GetComponentInParent<Change>();
             SetPC();
         }
     }
@@ -25,11 +25,10 @@ public class ItemScript : MonoBehaviour
     {
         playerLevel.ResetPlayer(resetTime);
     }
-    private void SetPlayer(GameObject other)
+    protected virtual void SetPlayer(GameObject other)
     {
+        playerLevel = other.GetComponentInParent<Change>();
+        playerLevel.ChangeMesh(GetComponent<MeshFilter>());
         gameObject.SetActive(false);
-        playerLevel = other.GetComponent<Change>();
-        meshFilter = other.GetComponent<MeshFilter>();
-        meshFilter.mesh = gameObject.GetComponent<MeshFilter>().mesh;
     }
 }

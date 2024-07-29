@@ -9,4 +9,8 @@ public class AirplaneItem : ItemScript
         playerLevel.ResetPlayer(GetComponent<MeshFilter>().mesh, resetTime);
         playerLevel.ChangeToAirplane();
     }
+    protected override void SetPlayer(GameObject other)
+    {
+        gameObject.SetActive(false);
+    }
 }

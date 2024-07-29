@@ -9,10 +9,18 @@ using UnityEngine.UI;
 public class Change : MonoBehaviour
 {
     private Mesh _defaltMesh;
-
+    [SerializeField]
+    private MeshFilter _meshFilter;
+    [SerializeField]
+    GameObject _targetPrefab;
     private void Awake()
     {
         _defaltMesh = GetComponent<MeshFilter>().mesh;
+    }
+
+    public void ChangeMesh(MeshFilter target)
+    {
+        _meshFilter.mesh = target.mesh;
     }
     public void ChangeToCar()
     {
@@ -36,7 +44,7 @@ public class Change : MonoBehaviour
 
     public void ResetPlayer(Mesh settingMesh, float time)
     {
-        _defaltMesh = settingMesh;
+        Instantiate(_targetPrefab);
         ResetPlayer(time);
     }
 
