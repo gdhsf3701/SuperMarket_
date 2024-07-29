@@ -5,19 +5,31 @@ using UnityEngine;
 
 public class ItemScript : MonoBehaviour
 {
+    protected Change playerLevel;
+
     [SerializeField]
-    private int expAmount;
-    private Change playerLevel;
+    protected float resetTime;
 
     private MeshFilter meshFilter;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            gameObject.SetActive(false);
+            SetPlayer(other.gameObject);
             playerLevel = other.GetComponent<Change>();
-            meshFilter = other.GetComponent<MeshFilter>();
-            meshFilter.mesh = gameObject.GetComponent<MeshFilter>().mesh;
+            SetPC();
         }
+    }
+    
+    protected virtual void SetPC()
+    {
+        playerLevel.ResetPlayer(resetTime);
+    }
+    private void SetPlayer(GameObject other)
+    {
+        gameObject.SetActive(false);
+        playerLevel = other.GetComponent<Change>();
+        meshFilter = other.GetComponent<MeshFilter>();
+        meshFilter.mesh = gameObject.GetComponent<MeshFilter>().mesh;
     }
 }
