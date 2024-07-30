@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WatermelonAttack : MonoBehaviour
+public class GrapeAttack : MonoBehaviour
 {
     public GameObject SeedPrefab;
     public Transform firePoint;
