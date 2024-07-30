@@ -51,10 +51,11 @@ public class CartMove : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
-        if (nowarked)
+        if (nowarked && collision.gameObject == Tomato.Instance.collison)
         {
             Warning.SetActive(true);
             nowarked = false;
+            Destroy(GetComponent<BoxCollider>());
         }
     }
 }

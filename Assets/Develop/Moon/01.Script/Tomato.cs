@@ -12,8 +12,11 @@ public class Tomato : MonoBehaviour
     private float _defaultSpeed;
     public float attackPower = 5;
 
+
     [SerializeField] Fire fire;
     public GameObject collison;
+
+    Vector3[] childTransformScale;
     public int Hp
     {
         get
@@ -22,7 +25,7 @@ public class Tomato : MonoBehaviour
         }
         set
         {
-            if (!invincible || value == 101010)
+            if (!invincible || value == -101010)
             {
                 if (hp - 1 <= 0)
                 {
@@ -32,6 +35,7 @@ public class Tomato : MonoBehaviour
                 else
                 {
                     hp -= 1;
+                    ScaleReset();
                 }
             }
         }
@@ -62,11 +66,20 @@ public class Tomato : MonoBehaviour
             colaCount = 0;
             invincible = false;
             collison = transform.Find("Collison").gameObject;
-            _defaultSpeed = 5; 
+            _defaultSpeed = 5;
+            
         }
         else
         {
             Destroy(gameObject);
+        }
+    }
+    private void Start()
+    {
+        childTransformScale = new Vector3[transform.childCount];
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            childTransformScale[i] = transform.GetChild(i).localScale;
         }
     }
     public void SeedEvolution()
@@ -79,5 +92,12 @@ public class Tomato : MonoBehaviour
     public void GameOver()
     {
         Time.timeScale = 0;
+    }
+    public void ScaleReset()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).localScale = childTransformScale[i];
+        }
     }
 }

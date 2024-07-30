@@ -10,6 +10,6 @@ public class Roll : MonoBehaviour
 
         Quaternion rotation = Quaternion.AngleAxis(10, parentForward);
 
-        transform.localRotation = transform.localRotation * rotation;
+        transform.localRotation = transform.localRotation * Quaternion.Inverse(rotation);
     }
 }
