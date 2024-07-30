@@ -12,8 +12,4 @@ public class CarItem : ItemScript
     {
         gameObject.SetActive(false);
     }
-    protected override void SetUI()
-    {
-        stateUI.ChangeMovementUI(uiIndex);
-    }
 }

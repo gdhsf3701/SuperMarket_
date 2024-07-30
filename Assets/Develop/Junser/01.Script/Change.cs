@@ -38,9 +38,13 @@ public class Change : MonoBehaviour
         movement.enabled = false;
         CarMove car = GetComponent<CarMove>();
         car.enabled = true;
-        GameObject carPrefab = Instantiate(_carPrefab, transform.position, transform.rotation, transform);
+        AirMove airplane = GetComponent<AirMove>();
+        airplane.enabled = false;
+        GameObject carPrefab = Instantiate(_carPrefab, transform.position, transform.rotation*Quaternion.Euler(0,90,0), transform);
         carPrefab.transform.localPosition = Vector3.zero;
         _currentState = carPrefab;
+
+        
     }
     public void ChangeToAirplane()
     {
@@ -49,7 +53,7 @@ public class Change : MonoBehaviour
         car.enabled = false;
         AirMove airplane = GetComponent<AirMove>();
         airplane.enabled = true;
-        GameObject carPrefab = Instantiate(_airplain, transform.position, transform.rotation, transform);
+        GameObject carPrefab = Instantiate(_airplain, transform.position, transform.rotation * Quaternion.Euler(0, 0, -90), transform);
         carPrefab.transform.localPosition = Vector3.zero;
     }
 

@@ -6,14 +6,10 @@ using UnityEngine.UI;
 public class StateUI : MonoBehaviour
 {
     [SerializeField]
-    private Sprite[] movements, buffs;
+    private Sprite[] buffs;
 
     [SerializeField]
-    Image movementUI, buffUI;
-    public void ChangeMovementUI(int index)
-    {
-        movementUI.sprite = movements[index];
-    }
+    Image  buffUI;
     public void ChangeBuffUI(int index, float time)
     {
         buffUI.sprite = buffs[index];
