@@ -974,6 +974,8 @@ GameObject:
   - component: {fileID: 1677686900}
   - component: {fileID: 1677686899}
   - component: {fileID: 1677686898}
+  - component: {fileID: 1677686901}
+  - component: {fileID: 1677686902}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1143,6 +1145,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbb3fe5dbbdcb24b8e38fa899d514e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1677686901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677686890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7574b8ea851124c8009047f3fd0fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterSeed: 0
+  grapeSeed: 0
+  colaCount: 0
+  invincible: 0
+  defaultSpeed: 5
+--- !u!114 &1677686902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677686890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c77763bce5286443bcf65e9aafb585a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheckDistance: 0.6
 --- !u!1 &1849456453
 GameObject:
   m_ObjectHideFlags: 0

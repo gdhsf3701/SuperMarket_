@@ -14,6 +14,8 @@ public class Change : MonoBehaviour
     private MeshFilter _meshFilter;
     [SerializeField]
     GameObject _carPrefab,_airplain;
+
+    private GameObject _currentState;
     private void Awake()
     {
         _defaltMesh = GetComponent<MeshFilter>().mesh;
@@ -25,20 +27,23 @@ public class Change : MonoBehaviour
     }
     public void ChangeToCar()
     {
+        Destroy(_currentState);
         PlayerMovement movement = GetComponent<PlayerMovement>();
         movement.enabled = false;
         CarMove car = GetComponent<CarMove>();
         car.enabled = true;
-        GameObject carPrefab = Instantiate(_carPrefab, transform.position, Quaternion.Euler(0,0,0), transform);
+        GameObject carPrefab = Instantiate(_carPrefab, transform.position, transform.rotation, transform);
         carPrefab.transform.localPosition = Vector3.zero;
+        _currentState = carPrefab;
     }
     public void ChangeToAirplane()
     {
+        Destroy( _currentState);
         CarMove car = GetComponent<CarMove>();
         car.enabled = false;
         AirMove airplane = GetComponent<AirMove>();
         airplane.enabled = true;
-        GameObject carPrefab = Instantiate(_airplain, transform.position, Quaternion.Euler(0, 0, 0), transform);
+        GameObject carPrefab = Instantiate(_airplain, transform.position, transform.rotation, transform);
         carPrefab.transform.localPosition = Vector3.zero;
     }
 
@@ -47,11 +52,7 @@ public class Change : MonoBehaviour
         StartCoroutine(ChangeCoolTime(time));
     }
 
-    public void ResetPlayer(Mesh settingMesh, float time)
-    {
-        
-        ResetPlayer(time);
-    }
+    
 
     private IEnumerator ChangeCoolTime(float time)
     {
