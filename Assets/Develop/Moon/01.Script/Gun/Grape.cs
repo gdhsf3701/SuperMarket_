@@ -8,10 +8,10 @@ public class Grape : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         grapeSeed = Random.Range(5, 9);
-        Tomato.Instance.grapeSeed += grapeSeed;
-        if (Tomato.Instance.grapeSeed > 50)
+        Tomato.Instance.Seed += grapeSeed;
+        if (Tomato.Instance.Seed > 20)
         {
-            Tomato.Instance.grapeSeed = 50;
+            Tomato.Instance.Seed = 20;
         }
         gameObject.SetActive(false);
     }

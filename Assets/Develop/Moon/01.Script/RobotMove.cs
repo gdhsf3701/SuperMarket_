@@ -11,7 +11,7 @@ public class RobotMove : MonoBehaviour
     private void Awake()
     {
         jump = GetComponent<Jump>();
-        rb = GetComponentInParent<Rigidbody>();
+        rb = GetComponentInChildren<Rigidbody>();
         enabled = false;
     }
     private void Start()
@@ -50,5 +50,9 @@ public class RobotMove : MonoBehaviour
         }
 
     }
-    
+    public void SpeedChange()
+    {
+        speed = Tomato.Instance.defaultSpeed;
+    }
+
 }

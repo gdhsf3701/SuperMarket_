@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraSeePoint : MonoBehaviour
 {
     public float turnSpeed=100;
+    [SerializeField]GameObject child;
     private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -12,7 +13,9 @@ public class CameraSeePoint : MonoBehaviour
     void Update()
     {
         float r = Input.GetAxis("Mouse X");
-
         transform.Rotate(Vector3.up * turnSpeed * Time.deltaTime * r);
+        Vector3 childPositionBackup = child.transform.position;
+        transform.position = child.transform.position;
+        child.transform.position = childPositionBackup;
     }
 }
