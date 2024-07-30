@@ -2,35 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CartMove : MonoBehaviour
+public class Coconut : MonoBehaviour
 {
-    float power = 2000f;
+    float power = 3000f;
     Rigidbody rb;
 
     bool nowarked = true;
     bool end = false;
 
-    float time=0;
+    float time = 0;
     float maxtime = 2f;
 
-    float delTime = 0; 
+    float delTime = 0;
 
     GameObject Warning;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        Warning = GetComponentsInChildren<Transform>()[4].gameObject;
+        Warning = GetComponentsInChildren<Transform>()[2].gameObject;
         Warning.SetActive(false);
+        rb.useGravity = false;
     }
     private void Update()
     {
         if (!nowarked)
         {
-            if (time >= maxtime&&!end)
+            if (time >= maxtime && !end)
             {
                 end = true;
                 Warning.SetActive(false);
-                rb.AddForce(transform.forward * power, ForceMode.Impulse);
+                rb.useGravity = true;
+                rb.AddForce(-transform.up * power, ForceMode.Impulse);
             }
             else
             {
@@ -39,7 +41,7 @@ public class CartMove : MonoBehaviour
         }
         if (end)
         {
-            if(delTime>=maxtime+0.3f)
+            if (delTime >= maxtime + 4)
             {
                 Destroy(gameObject);
             }

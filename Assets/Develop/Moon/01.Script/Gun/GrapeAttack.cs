@@ -19,7 +19,13 @@ public class GrapeAttack : MonoBehaviour
         {
             float radianAngle = Angle * Mathf.Deg2Rad;
 
-            Vector3 force = new Vector3(Mathf.Cos(radianAngle), Mathf.Sin(radianAngle), 0) * Power;
+            Vector3 forward = firePoint.forward;
+            Vector3 direction = Quaternion.Euler(Angle, 0, 0) * forward;
+
+            float xzPower = Mathf.Cos(radianAngle) * Power;
+            float yPower = Mathf.Sin(radianAngle) * Power;
+
+            Vector3 force = new Vector3(direction.x * xzPower, yPower, direction.z * xzPower);
 
             rb.AddForce(force, ForceMode.Impulse);
         }

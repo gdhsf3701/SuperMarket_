@@ -8,12 +8,13 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rb;
     private float speed;
-    Jump jump;
+    Roll roll;
+    bool spawn = false;
 
     private void Awake()
     {
-        rb = GetComponentInParent<Rigidbody>();
-        jump = GetComponentInParent<Jump>();
+        rb = GetComponentInChildren<Rigidbody>();
+        roll = GetComponentInChildren<Roll>();
     }
     private void Start()
     {
@@ -26,16 +27,17 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         PlayerMove();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            jump.JumpCheck();
-        }
     }
     private void PlayerMove()
     {
         if (Input.GetKey(KeyCode.W))
         {
             transform.position += transform.forward * Time.deltaTime * speed;
+            roll.Rolling();
         }
+    }
+    public void SpeedChange()
+    {
+        speed = Tomato.Instance.defaultSpeed;
     }
 }

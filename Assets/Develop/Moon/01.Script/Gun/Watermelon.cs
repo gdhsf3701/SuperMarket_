@@ -8,10 +8,10 @@ public class Watermelon : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         watermelonSeed = Random.Range(13, 16);
-        Tomato.Instance.waterSeed += watermelonSeed;
-        if (Tomato.Instance.waterSeed > 50)
+        Tomato.Instance.Seed += watermelonSeed;
+        if (Tomato.Instance.Seed > 50)
         {
-            Tomato.Instance.waterSeed = 50;
+            Tomato.Instance.Seed = 50;
         }
         gameObject.SetActive(false);
     }

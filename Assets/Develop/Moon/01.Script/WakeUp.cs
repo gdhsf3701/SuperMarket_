@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class WakeUp : MonoBehaviour
 {
-    private float wakeUpTime = 3f;
+    private float wakeUpTime = 6f;
     Jump jump;
+    Rigidbody rb;
     private bool isGrounded;
     public bool warking = false;
     CameraSeePoint cameraSeePoint;
     private void Awake()
     {
-        cameraSeePoint = GetComponent<CameraSeePoint>();
-        jump = GetComponent<Jump>();
+        rb = GetComponent<Rigidbody>();
+        cameraSeePoint = GetComponentInParent<CameraSeePoint>();
+        jump = GetComponentInParent<Jump>();
     }
     private void Update()
     {
@@ -31,6 +33,7 @@ public class WakeUp : MonoBehaviour
         {
             Vector3 newRotation = new Vector3(0, transform.rotation.y, 0);
             transform.rotation = Quaternion.Euler(newRotation);
+            rb.velocity = Vector3.zero;
         }
         cameraSeePoint.turnSpeed = 100;
         warking = false;
