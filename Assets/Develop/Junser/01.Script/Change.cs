@@ -17,6 +17,10 @@ public class Change : MonoBehaviour
 
     [SerializeField]
     GameObject[] visual;
+
+    [SerializeField]
+    PlayerMovement movement;
+
     private PrefabOverride _prefabOverride;
 
     private MeshRenderer _material;
@@ -37,13 +41,15 @@ public class Change : MonoBehaviour
         PlayerMovement movement = GetComponent<PlayerMovement>();
         movement.enabled = false;
         CarMove car = GetComponent<CarMove>();
+        transform.rotation = Quaternion.Euler(0, 0, 0);
         car.enabled = true;
         AirMove airplane = GetComponent<AirMove>();
         airplane.enabled = false;
         GameObject carPrefab = Instantiate(_carPrefab, transform.position, transform.rotation*Quaternion.Euler(0,90,0), transform);
         carPrefab.transform.localPosition = Vector3.zero;
         _currentState = carPrefab;
-
+        movement.StopRolling();
+        transform.position = transform.position + new Vector3(0,1,0);
         
     }
     public void ChangeToAirplane()
@@ -53,8 +59,10 @@ public class Change : MonoBehaviour
         car.enabled = false;
         AirMove airplane = GetComponent<AirMove>();
         airplane.enabled = true;
-        GameObject carPrefab = Instantiate(_airplain, transform.position, transform.rotation * Quaternion.Euler(0, 0, -90), transform);
+        GameObject carPrefab = Instantiate(_airplain, transform.position, transform.rotation * Quaternion.Euler(0, -90, 0), transform);
         carPrefab.transform.localPosition = Vector3.zero;
+        _currentState = carPrefab;
+        movement.StopRolling();
     }
 
     public void ResetPlayer(float time)

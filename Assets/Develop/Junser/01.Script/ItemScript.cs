@@ -28,6 +28,10 @@ public class ItemScript : MonoBehaviour
             
         }
     }
+    private void Awake()
+    {
+        stateUI = FindAnyObjectByType<StateUI>();
+    }
     protected virtual void SetUI()
     {
         stateUI.ChangeBuffUI(uiIndex, resetTime);

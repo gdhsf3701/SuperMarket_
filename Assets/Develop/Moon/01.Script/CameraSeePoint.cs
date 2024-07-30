@@ -6,6 +6,8 @@ public class CameraSeePoint : MonoBehaviour
 {
     public float turnSpeed=100;
     GameObject child;
+    [SerializeField]
+    private GameObject Panal;
     private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -21,5 +23,10 @@ public class CameraSeePoint : MonoBehaviour
         Vector3 childPositionBackup = child.transform.position;
         transform.position = child.transform.position;
         child.transform.position = childPositionBackup;
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Panal.SetActive(true);
+        }
     }
 }
