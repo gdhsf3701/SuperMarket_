@@ -13,7 +13,7 @@ public class AirMove : MonoBehaviour
     {
         RotationX = transform.rotation.x;
         RotationY = transform.rotation.y;
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponentInChildren<Rigidbody>();
         enabled = false;
     }
     private void OnEnable()
@@ -60,5 +60,9 @@ public class AirMove : MonoBehaviour
     private void Move()
     {
         rb.velocity = transform.forward * speed;
+    }
+    public void SpeedChange()
+    {
+        speed = Tomato.Instance.defaultSpeed * 2.5f;
     }
 }

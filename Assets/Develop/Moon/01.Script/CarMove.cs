@@ -12,7 +12,7 @@ public class CarMove : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponentInChildren<Rigidbody>();
         enabled = false;
     }
     private void Start()
@@ -49,6 +49,10 @@ public class CarMove : MonoBehaviour
     }
     private void Move()
     {
-        transform.position += transform.forward * speed*Time.deltaTime;
+        transform.position += transform.forward * speed * Time.deltaTime;
+    }
+    public void SpeedChange()
+    {
+        maxSpeed = Tomato.Instance.defaultSpeed * 5;
     }
 }

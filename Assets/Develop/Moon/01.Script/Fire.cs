@@ -6,6 +6,8 @@ public class Fire : MonoBehaviour
 {
     GrapeAttack grape;
     WatermelonAttack watermelon;
+    
+    public bool melon=false;
     private void Awake()
     {
         grape = GetComponent<GrapeAttack>();
@@ -13,13 +15,16 @@ public class Fire : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0))
         {
-            grape.Fire();
-        }
-        if(Input.GetMouseButtonDown(1))
-        {
-            watermelon.Fire();
+            if (melon)
+            {
+                watermelon?.Fire(); 
+            }
+            else
+            {
+                grape?.Fire();
+            }
         }
     }
 }

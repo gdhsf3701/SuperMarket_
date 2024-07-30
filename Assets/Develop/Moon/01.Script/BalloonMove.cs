@@ -12,7 +12,7 @@ public class BalloonMove : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponentInParent<Rigidbody>();
+        rb = GetComponentInChildren<Rigidbody>();
         player = GetComponent<PlayerMovement>();
         enabled = false;
     }
@@ -46,5 +46,9 @@ public class BalloonMove : MonoBehaviour
         {
             transform.position += transform.forward * Time.deltaTime * speed;
         }
+    }
+    public void SpeedChange()
+    {
+        speed = Tomato.Instance.defaultSpeed * 0.25f;
     }
 }

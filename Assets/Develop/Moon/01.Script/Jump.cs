@@ -7,13 +7,13 @@ public class Jump : MonoBehaviour
     public float jumpForce = 5f;
 
     public LayerMask groundLayer;
-    public float groundCheckDistance = 0.6f;
+    public float groundCheckDistance = 0.9f;
     private bool isGrounded;
 
     private Rigidbody rb;
     private void Awake()
     {
-        rb = GetComponentInParent<Rigidbody>();
+        rb = GetComponentInChildren<Rigidbody>();
     }
     private void Update()
     {
