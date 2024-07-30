@@ -9,6 +9,11 @@ public class HpUp : MonoBehaviour
         if (other.gameObject == Tomato.Instance.collison)
         {
             Tomato.Instance.hp += 1;
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                Tomato.Instance.transform.GetChild(i).localScale *= 1.25f;
+            }
+            Destroy(gameObject);
         }
     }
 }
