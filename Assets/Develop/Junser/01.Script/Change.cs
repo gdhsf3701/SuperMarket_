@@ -15,15 +15,21 @@ public class Change : MonoBehaviour
     [SerializeField]
     GameObject _carPrefab,_airplain;
 
-    private GameObject _currentState;
-    private void Awake()
-    {
-        _defaltMesh = GetComponent<MeshFilter>().mesh;
-    }
+    [SerializeField]
+    GameObject[] visual;
+    private PrefabOverride _prefabOverride;
 
-    public void ChangeMesh(MeshFilter target)
+    private MeshRenderer _material;
+    private Material[] _defaltMaterial;
+
+    private GameObject _currentState;
+
+    public void ChangeVisual(int index)
     {
-        _meshFilter.mesh = target.mesh;
+        for (int i = 0; i < visual.Length; i++)
+        {
+            visual[i].gameObject.SetActive(i == index);
+        }
     }
     public void ChangeToCar()
     {
@@ -57,6 +63,6 @@ public class Change : MonoBehaviour
     private IEnumerator ChangeCoolTime(float time)
     {
         yield return new WaitForSeconds(time);
-        GetComponent<MeshFilter>().mesh = _defaltMesh;
+        ChangeVisual(0);
     }
 }

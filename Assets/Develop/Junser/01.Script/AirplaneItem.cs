@@ -8,6 +8,11 @@ public class AirplaneItem : ItemScript
     {
         playerLevel.ChangeToAirplane();
     }
+
+    protected override void SetUI()
+    {
+        stateUI.ChangeMovementUI(uiIndex);
+    }
     protected override void SetPlayer(GameObject other)
     {
         gameObject.SetActive(false);
