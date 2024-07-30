@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class StateUI : MonoBehaviour
 {
     [SerializeField]
-    protected Sprite[] movements, buffs;
+    private Sprite[] movements, buffs;
 
     [SerializeField]
     Image movementUI, buffUI;
