@@ -15,7 +15,7 @@ public class WatermelonAttack : MonoBehaviour
 
         Rigidbody rb = seed.GetComponent<Rigidbody>();
 
-        if (rb != null)
+        if (rb != null&&Tomato.Instance.Seed>0)
         {
             float radianAngle = Angle * Mathf.Deg2Rad;
 
@@ -28,6 +28,7 @@ public class WatermelonAttack : MonoBehaviour
             Vector3 force = new Vector3(direction.x * xzPower, yPower, direction.z * xzPower);
 
             rb.AddForce(force, ForceMode.Impulse);
+            Tomato.Instance.Seed--;
         }
     }
 }
