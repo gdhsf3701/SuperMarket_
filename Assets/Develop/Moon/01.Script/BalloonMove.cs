@@ -1,35 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class PlayerMovement : MonoBehaviour
+public class BalloonMove : MonoBehaviour
 {
-
     private Rigidbody rb;
     private float speed;
-    Jump jump;
+    PlayerMovement player;
+
+    float nowTime = 0;
 
     private void Awake()
     {
         rb = GetComponentInParent<Rigidbody>();
-        jump = GetComponentInParent<Jump>();
+        player = GetComponent<PlayerMovement>();
+        enabled = false;
     }
     private void Start()
     {
-        speed = Tomato.Instance.defaultSpeed;
+        speed = Tomato.Instance.defaultSpeed * 0.25f;
     }
     private void OnEnable()
     {
-        rb.useGravity = true;
+        rb.useGravity = false;
+        nowTime = 0;
     }
     private void Update()
     {
+        Up();
         PlayerMove();
-        if (Input.GetKeyDown(KeyCode.Space))
+        nowTime += Time.deltaTime;
+        if (nowTime >= 3)
         {
-            jump.JumpCheck();
+            player.enabled = true;
+            enabled = false;
         }
+    }
+    private void Up()
+    {
+        rb.velocity = new Vector3(rb.velocity.x, 1, rb.velocity.z);
     }
     private void PlayerMove()
     {

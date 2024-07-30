@@ -5,17 +5,19 @@ using UnityEngine;
 public class CarMove : MonoBehaviour
 {
     float speed = 0f;
-    float maxSpeed = 25f;
+    float maxSpeed;
     float minSpeed = 0f;
     float speedUpDownRate = 0.03f;
     private Rigidbody rb;
-    WakeUp wakeUp;
 
     private void Awake()
     {
-        wakeUp = GetComponent<WakeUp>();
         rb = GetComponent<Rigidbody>();
         enabled = false;
+    }
+    private void Start()
+    {
+        maxSpeed = Tomato.Instance.defaultSpeed * 5;
     }
     private void OnEnable()
     {
