@@ -5,10 +5,14 @@ using UnityEngine;
 public class CameraSeePoint : MonoBehaviour
 {
     public float turnSpeed=100;
-    [SerializeField]GameObject child;
+    GameObject child;
     private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.Locked;
+    }
+    private void Start()
+    {
+        child = Tomato.Instance.collison;
     }
     void Update()
     {
