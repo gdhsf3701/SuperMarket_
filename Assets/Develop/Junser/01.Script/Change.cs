@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ public class Change : MonoBehaviour
     [SerializeField]
     private MeshFilter _meshFilter;
     [SerializeField]
-    GameObject _targetPrefab;
+    GameObject _carPrefab,_airplain;
     private void Awake()
     {
         _defaltMesh = GetComponent<MeshFilter>().mesh;
@@ -28,6 +29,8 @@ public class Change : MonoBehaviour
         movement.enabled = false;
         CarMove car = GetComponent<CarMove>();
         car.enabled = true;
+        GameObject carPrefab = Instantiate(_carPrefab, transform.position, Quaternion.Euler(0,0,0), transform);
+        carPrefab.transform.localPosition = Vector3.zero;
     }
     public void ChangeToAirplane()
     {
@@ -35,6 +38,8 @@ public class Change : MonoBehaviour
         car.enabled = false;
         AirMove airplane = GetComponent<AirMove>();
         airplane.enabled = true;
+        GameObject carPrefab = Instantiate(_airplain, transform.position, Quaternion.Euler(0, 0, 0), transform);
+        carPrefab.transform.localPosition = Vector3.zero;
     }
 
     public void ResetPlayer(float time)
@@ -44,7 +49,7 @@ public class Change : MonoBehaviour
 
     public void ResetPlayer(Mesh settingMesh, float time)
     {
-        Instantiate(_targetPrefab);
+        
         ResetPlayer(time);
     }
 
