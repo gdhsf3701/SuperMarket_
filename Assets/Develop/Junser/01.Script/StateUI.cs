@@ -15,6 +15,10 @@ public class StateUI : MonoBehaviour
         buffUI.sprite = buffs[index];
         StartCoroutine(ResetUI(time));
     }
+    public void ChangeBuffUI(int index)
+    {
+        buffUI.sprite = buffs[index];
+    }
 
     private IEnumerator ResetUI(float time)
     {

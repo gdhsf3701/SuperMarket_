@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tomato : MonoBehaviour
 {
@@ -49,6 +50,8 @@ public class Tomato : MonoBehaviour
     [SerializeField]
     TMP_Text text;
 
+    [SerializeField]
+    Image itemUI;
     Vector3[] childTransformScale;
     public int Hp
     {
@@ -136,5 +139,9 @@ public class Tomato : MonoBehaviour
     private void ChangeUI()
     {
         text.text = $"³²Àº ¾¾¾Ñ:{Seed}";
+        if (Seed <= 0)
+        {
+            itemUI.sprite = null;
+        }
     }
 }
