@@ -15,6 +15,11 @@ public class SettingPanal : MonoBehaviour
         gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    public void ReLoad(string name)
+    {
+        LoadingScript.LoadScene(name);
+    }
     public void Exit()
     {
         Application.Quit();
