@@ -2010,7 +2010,7 @@ MonoBehaviour:
   _airplain: {fileID: 3060025146681914790, guid: 35da7cd4d50c24742917bcc257178b59,
     type: 3}
   visual:
-  - {fileID: 1170206958}
+  - {fileID: 1502841476}
   - {fileID: 1578371982}
   - {fileID: 2139055012}
   movement: {fileID: 843627636}
@@ -3160,12 +3160,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1116080418}
   m_SourcePrefab: {fileID: 100100000, guid: bfb0531854a64a84285de93bf64c3129, type: 3}
---- !u!1 &1170206958 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1192824812837250942, guid: 557c2f1c816b9f04a86f2e3bdab24ca4,
-    type: 3}
-  m_PrefabInstance: {fileID: 843627631}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1207081178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3660,6 +3654,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1502841476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1192824812837250942, guid: 557c2f1c816b9f04a86f2e3bdab24ca4,
+    type: 3}
+  m_PrefabInstance: {fileID: 843627631}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1530331544
 GameObject:
   m_ObjectHideFlags: 0
