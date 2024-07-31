@@ -7,18 +7,17 @@ public class AirMove : MonoBehaviour
     float speed;
     float XYRate=1f;
     Rigidbody rb;
-    [SerializeField]float RotationX = 0;
-    [SerializeField]float RotationY = 0;
+    float RotationX = 0;
+    float RotationY = 0;
     private void Awake()
     {
-        RotationX = transform.rotation.x;
-        RotationY = transform.rotation.y;
         rb = GetComponentInChildren<Rigidbody>();
         enabled = false;
     }
     private void OnEnable()
     {
         rb.useGravity = false;
+        RotationY = transform.localRotation.eulerAngles.y;
     }
     private void Start()
     {

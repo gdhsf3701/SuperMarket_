@@ -11,24 +11,27 @@ public class WatermelonAttack : MonoBehaviour
 
     public void Fire()
     {
-        GameObject seed = Instantiate(SeedPrefab, firePoint.position, firePoint.rotation);
-
-        Rigidbody rb = seed.GetComponent<Rigidbody>();
-
-        if (rb != null&&Tomato.Instance.Seed>0)
+        if (Tomato.Instance.Seed > 0)
         {
-            float radianAngle = Angle * Mathf.Deg2Rad;
+            GameObject seed = Instantiate(SeedPrefab, firePoint.position, firePoint.rotation);
 
-            Vector3 forward = firePoint.forward;
-            Vector3 direction = Quaternion.Euler(Angle, 0, 0) * forward;
+            Rigidbody rb = seed.GetComponent<Rigidbody>();
 
-            float xzPower = Mathf.Cos(radianAngle) * Power;
-            float yPower = Mathf.Sin(radianAngle) * Power;
+            if (rb != null)
+            {
+                float radianAngle = Angle * Mathf.Deg2Rad;
 
-            Vector3 force = new Vector3(direction.x * xzPower, yPower, direction.z * xzPower);
+                Vector3 forward = firePoint.forward;
+                Vector3 direction = Quaternion.Euler(Angle, 0, 0) * forward;
 
-            rb.AddForce(force, ForceMode.Impulse);
-            Tomato.Instance.Seed--;
+                float xzPower = Mathf.Cos(radianAngle) * Power;
+                float yPower = Mathf.Sin(radianAngle) * Power;
+
+                Vector3 force = new Vector3(direction.x * xzPower, yPower, direction.z * xzPower);
+
+                rb.AddForce(force, ForceMode.Impulse);
+                Tomato.Instance.Seed--;
+            }
         }
     }
 }
