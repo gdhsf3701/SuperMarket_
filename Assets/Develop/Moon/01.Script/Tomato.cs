@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Tomato : MonoBehaviour
 {
     public static Tomato Instance = null;
-    public int Seed = 0;
+    private int seed;
+    public int Seed { get { return seed; } set { seed = value; ChangeUI(); } }
     public int colaCount = 0;
     public bool invincible = false;
     public int hp = 1;
@@ -15,6 +17,9 @@ public class Tomato : MonoBehaviour
 
     [SerializeField] Fire fire;
     public GameObject collison;
+
+    [SerializeField]
+    TMP_Text text;
 
     Vector3[] childTransformScale;
     public int Hp
@@ -99,5 +104,9 @@ public class Tomato : MonoBehaviour
         {
             transform.GetChild(i).localScale = childTransformScale[i];
         }
+    }
+    private void ChangeUI()
+    {
+        text.text = $"³²Àº ¾¾¾Ñ:{Seed}";
     }
 }

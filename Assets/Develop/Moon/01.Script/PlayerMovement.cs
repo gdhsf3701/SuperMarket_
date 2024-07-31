@@ -40,4 +40,9 @@ public class PlayerMovement : MonoBehaviour
     {
         speed = Tomato.Instance.defaultSpeed;
     }
+
+    public void StopRolling()
+    {
+        rb.angularVelocity = Vector3.zero;
+    }
 }

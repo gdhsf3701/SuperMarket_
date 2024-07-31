@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,29 +13,56 @@ public class Change : MonoBehaviour
     [SerializeField]
     private MeshFilter _meshFilter;
     [SerializeField]
-    GameObject _targetPrefab;
-    private void Awake()
-    {
-        _defaltMesh = GetComponent<MeshFilter>().mesh;
-    }
+    GameObject _carPrefab,_airplain;
 
-    public void ChangeMesh(MeshFilter target)
+    [SerializeField]
+    GameObject[] visual;
+
+    [SerializeField]
+    PlayerMovement movement;
+
+    private PrefabOverride _prefabOverride;
+
+    private MeshRenderer _material;
+    private Material[] _defaltMaterial;
+
+    private GameObject _currentState;
+
+    public void ChangeVisual(int index)
     {
-        _meshFilter.mesh = target.mesh;
+        for (int i = 0; i < visual.Length; i++)
+        {
+            visual[i].gameObject.SetActive(i == index);
+        }
     }
     public void ChangeToCar()
     {
+        Destroy(_currentState);
         PlayerMovement movement = GetComponent<PlayerMovement>();
         movement.enabled = false;
         CarMove car = GetComponent<CarMove>();
+        transform.rotation = Quaternion.Euler(0, 0, 0);
         car.enabled = true;
+        AirMove airplane = GetComponent<AirMove>();
+        airplane.enabled = false;
+        GameObject carPrefab = Instantiate(_carPrefab, transform.position, transform.rotation*Quaternion.Euler(0,90,0), transform);
+        carPrefab.transform.localPosition = Vector3.zero;
+        _currentState = carPrefab;
+        movement.StopRolling();
+        transform.position = transform.position + new Vector3(0,1,0);
+        
     }
     public void ChangeToAirplane()
     {
+        Destroy( _currentState);
         CarMove car = GetComponent<CarMove>();
         car.enabled = false;
         AirMove airplane = GetComponent<AirMove>();
         airplane.enabled = true;
+        GameObject carPrefab = Instantiate(_airplain, transform.position, transform.rotation * Quaternion.Euler(0, -90, 0), transform);
+        carPrefab.transform.localPosition = Vector3.zero;
+        _currentState = carPrefab;
+        movement.StopRolling();
     }
 
     public void ResetPlayer(float time)
@@ -42,15 +70,11 @@ public class Change : MonoBehaviour
         StartCoroutine(ChangeCoolTime(time));
     }
 
-    public void ResetPlayer(Mesh settingMesh, float time)
-    {
-        Instantiate(_targetPrefab);
-        ResetPlayer(time);
-    }
+    
 
     private IEnumerator ChangeCoolTime(float time)
     {
         yield return new WaitForSeconds(time);
-        GetComponent<MeshFilter>().mesh = _defaltMesh;
+        ChangeVisual(0);
     }
 }
