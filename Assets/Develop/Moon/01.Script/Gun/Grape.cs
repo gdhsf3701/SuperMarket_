@@ -9,10 +9,6 @@ public class Grape : MonoBehaviour
     {
         grapeSeed = Random.Range(5, 9);
         Tomato.Instance.Seed += grapeSeed;
-        if (Tomato.Instance.Seed > 20)
-        {
-            Tomato.Instance.Seed = 20;
-        }
         gameObject.SetActive(false);
     }
 }

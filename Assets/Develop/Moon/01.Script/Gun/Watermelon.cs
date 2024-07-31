@@ -9,10 +9,6 @@ public class Watermelon : MonoBehaviour
     {
         watermelonSeed = Random.Range(13, 16);
         Tomato.Instance.Seed += watermelonSeed;
-        if (Tomato.Instance.Seed > 50)
-        {
-            Tomato.Instance.Seed = 50;
-        }
         gameObject.SetActive(false);
     }
 }

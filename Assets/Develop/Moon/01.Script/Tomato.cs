@@ -7,7 +7,35 @@ public class Tomato : MonoBehaviour
 {
     public static Tomato Instance = null;
     private int seed;
-    public int Seed { get { return seed; } set { seed = value; ChangeUI(); } }
+    public int Seed 
+    { get { return seed; } 
+        set 
+        {
+            if (fire.melon)
+            {
+                if(value > 50)
+                {
+                    seed = 50;
+                }
+                else
+                {
+                    seed = value;
+                }
+            }
+            else
+            {
+                if (value > 20)
+                {
+                    seed = 20;
+                }
+                else
+                {
+                    seed = value;
+                }
+            }
+            ChangeUI(); 
+        } 
+    }
     public int colaCount = 0;
     public bool invincible = false;
     public int hp = 1;
