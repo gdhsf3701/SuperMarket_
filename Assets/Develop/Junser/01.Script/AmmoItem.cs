@@ -8,4 +8,6 @@ public class AmmoItem : ItemScript
     {
         stateUI.ChangeBuffUI(uiIndex);
     }
+
+    
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WakeUp : MonoBehaviour
 {
-    private float wakeUpTime = 6f;
+    private float wakeUpTime = 2f;
     Fall fall;
     Rigidbody rb;
     public bool warking = false;
@@ -31,7 +31,7 @@ public class WakeUp : MonoBehaviour
         {
             Vector3 newRotation = new Vector3(0, transform.rotation.y, 0);
             transform.rotation = Quaternion.Euler(newRotation);
-            rb.angularVelocity = Vector3.zero;
+            rb.velocity = Vector3.zero;
         }
         cameraSeePoint.turnSpeed = 100;
         warking = false;

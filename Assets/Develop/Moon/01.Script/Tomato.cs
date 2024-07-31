@@ -51,6 +51,9 @@ public class Tomato : MonoBehaviour
     TMP_Text text;
 
     [SerializeField]
+    GameObject gameOver;
+
+    [SerializeField]
     Image itemUI;
     Vector3[] childTransformScale;
     public int Hp
@@ -129,6 +132,8 @@ public class Tomato : MonoBehaviour
     public void GameOver()
     {
         Time.timeScale = 0;
+        gameOver.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
     public void ScaleReset()
     {

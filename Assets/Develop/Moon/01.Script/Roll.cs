@@ -6,7 +6,7 @@ public class Roll : MonoBehaviour
 {
     public void Rolling()
     {
-        Vector3 parentForward = transform.parent.forward;
+        Vector3 parentForward = transform.parent.right * -1;
 
         Quaternion rotation = Quaternion.AngleAxis(10, parentForward);
 
