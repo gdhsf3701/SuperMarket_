@@ -48,7 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SeedPrefab: {fileID: 8233408968672654156, guid: 144cbc879e0fde947ab4277599309c49,
     type: 3}
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 7450239923083905342, guid: 557c2f1c816b9f04a86f2e3bdab24ca4,
+    type: 3}
   Angle: 15
   Power: 15
 --- !u!114 &5670212760899712186
@@ -65,7 +66,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SeedPrefab: {fileID: 8150605199905633334, guid: ebfed4f717374f2469931b45aeabe4db,
     type: 3}
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 7450239923083905342, guid: 557c2f1c816b9f04a86f2e3bdab24ca4,
+    type: 3}
   Angle: 15
   Power: 15
 --- !u!114 &4772581471214986886
