@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class AirMove : MonoBehaviour
 {
-    float speed = 12.5f;
+    float speed;
     float XYRate=1f;
     Rigidbody rb;
-    [SerializeField]float RotationX = 0;
-    [SerializeField]float RotationY = 0;
+    float RotationX = 0;
+    float RotationY = 0;
     private void Awake()
     {
-        RotationX = transform.rotation.x;
-        RotationY = transform.rotation.y;
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponentInChildren<Rigidbody>();
+        enabled = false;
     }
     private void OnEnable()
     {
         rb.useGravity = false;
+        RotationY = transform.localRotation.eulerAngles.y;
+    }
+    private void Start()
+    {
+        speed = Tomato.Instance.defaultSpeed * 2.5f;
     }
     private void Update()
     {
@@ -41,11 +45,11 @@ public class AirMove : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            RotationY += XYRate;
+            RotationY -= XYRate;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            RotationY -= XYRate;
+            RotationY += XYRate;
         }
     }
     private void RotationMove()
@@ -55,5 +59,9 @@ public class AirMove : MonoBehaviour
     private void Move()
     {
         rb.velocity = transform.forward * speed;
+    }
+    public void SpeedChange()
+    {
+        speed = Tomato.Instance.defaultSpeed * 2.5f;
     }
 }

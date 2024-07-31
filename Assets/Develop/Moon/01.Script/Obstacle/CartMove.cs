@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class CartMove : MonoBehaviour
 {
-    float power = 75f;
+    float power = 2000f;
     Rigidbody rb;
 
     bool nowarked = true;
     bool end = false;
 
     float time=0;
-    float maxtime = 1;
+    float maxtime = 2f;
+
+    float delTime = 0; 
 
     GameObject Warning;
     private void Awake()
@@ -35,13 +37,25 @@ public class CartMove : MonoBehaviour
                 time += Time.deltaTime;
             }
         }
+        if (end)
+        {
+            if(delTime>=maxtime+0.3f)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                delTime += Time.deltaTime;
+            }
+        }
     }
     private void OnTriggerEnter(Collider collision)
     {
-        if (nowarked)
+        if (nowarked && collision.gameObject == Tomato.Instance.collison)
         {
-            nowarked = false;
             Warning.SetActive(true);
+            nowarked = false;
+            Destroy(GetComponent<BoxCollider>());
         }
     }
 }
