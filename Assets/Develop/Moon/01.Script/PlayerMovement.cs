@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private void PlayerMove()
     {
         if (Input.GetKey(KeyCode.W))
-        {
+        { 
             transform.position += transform.forward * Time.deltaTime * speed;
             roll.Rolling();
         }

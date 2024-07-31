@@ -31,10 +31,9 @@ public class WakeUp : MonoBehaviour
         {
             Vector3 newRotation = new Vector3(0, transform.rotation.y, 0);
             transform.rotation = Quaternion.Euler(newRotation);
-            rb.freezeRotation = true;
+            rb.angularVelocity = Vector3.zero;
         }
         cameraSeePoint.turnSpeed = 100;
-        rb.freezeRotation = false;
         warking = false;
     }
 }
