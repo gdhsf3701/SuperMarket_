@@ -46,9 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5078dca395d4ac441943c1695ceac820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SeedPrefab: {fileID: 1376041795348139741, guid: fc4f66ec2ae9ded4da8cbdeec0945f03,
+  SeedPrefab: {fileID: 8233408968672654156, guid: 144cbc879e0fde947ab4277599309c49,
     type: 3}
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 7450239923083905342, guid: 557c2f1c816b9f04a86f2e3bdab24ca4,
+    type: 3}
   Angle: 15
   Power: 15
 --- !u!114 &5670212760899712186
@@ -63,11 +64,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04ef8676d5833df4e91254e9943ac062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SeedPrefab: {fileID: 1376041795348139741, guid: fc4f66ec2ae9ded4da8cbdeec0945f03,
+  SeedPrefab: {fileID: 8150605199905633334, guid: ebfed4f717374f2469931b45aeabe4db,
     type: 3}
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 7450239923083905342, guid: 557c2f1c816b9f04a86f2e3bdab24ca4,
+    type: 3}
   Angle: 15
-  Power: 20
+  Power: 15
 --- !u!114 &4772581471214986886
 MonoBehaviour:
   m_ObjectHideFlags: 0

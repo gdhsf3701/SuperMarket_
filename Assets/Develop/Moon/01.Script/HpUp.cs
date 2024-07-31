@@ -8,6 +8,7 @@ public class HpUp : MonoBehaviour
     {
         if (other.gameObject == Tomato.Instance.collison)
         {
+            Tomato.Instance.invincible = false;
             Tomato.Instance.hp += 1;
             for (int i = 0; i < transform.childCount; i++)
             {

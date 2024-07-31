@@ -8,12 +8,40 @@ public class Tomato : MonoBehaviour
 {
     public static Tomato Instance = null;
     private int seed;
-    public int Seed { get { return seed; } set { seed = value; ChangeUI(); } }
+    public int Seed 
+    { get { return seed; } 
+        set 
+        {
+            if (fire.melon)
+            {
+                if(value > 50)
+                {
+                    seed = 50;
+                }
+                else
+                {
+                    seed = value;
+                }
+            }
+            else
+            {
+                if (value > 20)
+                {
+                    seed = 20;
+                }
+                else
+                {
+                    seed = value;
+                }
+            }
+            ChangeUI(); 
+        } 
+    }
     public int colaCount = 0;
     public bool invincible = false;
     public int hp = 1;
-    private float _defaultSpeed;
-    public float attackPower = 5;
+    [SerializeField]private float _defaultSpeed;
+    public float attackPower = 4;
 
 
     [SerializeField] Fire fire;
@@ -70,11 +98,6 @@ public class Tomato : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            Seed = 0;
-            colaCount = 0;
-            invincible = false;
-            collison = transform.Find("Collison").gameObject;
-            _defaultSpeed = 5;
             
         }
         else
@@ -84,6 +107,12 @@ public class Tomato : MonoBehaviour
     }
     private void Start()
     {
+        Seed = 0;
+        colaCount = 0;
+        invincible = false;
+        defaultSpeed = 5;
+        attackPower = 4;
+        collison = transform.Find("Collison").gameObject;
         childTransformScale = new Vector3[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -95,7 +124,7 @@ public class Tomato : MonoBehaviour
         fire.melon = true;
         Seed = 0;
         defaultSpeed *= 1.25f;
-        attackPower *= 0.75f;
+        attackPower = 3;
     }
     public void GameOver()
     {
