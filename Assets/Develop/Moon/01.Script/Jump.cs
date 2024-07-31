@@ -6,23 +6,16 @@ public class Jump : MonoBehaviour
 {
     public float jumpForce = 5f;
 
-    public LayerMask groundLayer;
-    public float groundCheckDistance = 0.9f;
-    private bool isGrounded;
+    Fall fall;
 
     private Rigidbody rb;
     private void Awake()
     {
         rb = GetComponentInChildren<Rigidbody>();
     }
-    private void Update()
-    {
-        Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.red);
-    }
     public void JumpCheck()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer);
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+        if (fall.isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             Jumping();
         }

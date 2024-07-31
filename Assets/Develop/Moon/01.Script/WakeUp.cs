@@ -5,16 +5,15 @@ using UnityEngine;
 public class WakeUp : MonoBehaviour
 {
     private float wakeUpTime = 6f;
-    Jump jump;
+    Fall fall;
     Rigidbody rb;
-    private bool isGrounded;
     public bool warking = false;
     CameraSeePoint cameraSeePoint;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         cameraSeePoint = GetComponentInParent<CameraSeePoint>();
-        jump = GetComponentInParent<Jump>();
+        fall = GetComponentInParent<Fall>();
     }
     private void Update()
     {
@@ -28,14 +27,14 @@ public class WakeUp : MonoBehaviour
         warking = true;
         cameraSeePoint.turnSpeed=0;
         yield return new WaitForSeconds(wakeUpTime);
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, jump.groundCheckDistance, jump.groundLayer);
-        if(isGrounded)
+        if(fall.isGrounded)
         {
             Vector3 newRotation = new Vector3(0, transform.rotation.y, 0);
             transform.rotation = Quaternion.Euler(newRotation);
-            rb.velocity = Vector3.zero;
+            rb.freezeRotation = true;
         }
         cameraSeePoint.turnSpeed = 100;
+        rb.freezeRotation = false;
         warking = false;
     }
 }
