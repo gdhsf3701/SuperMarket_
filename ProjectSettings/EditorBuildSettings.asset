@@ -5,13 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Develop/hyeonji/00.Scene/Start.unity
+    guid: 0baffb3808bf8cc42879eef95e55c8cf
   - enabled: 0
     path: Assets/Develop/Junser/00.Scene/LoadingTest.unity
     guid: 20d49311400833242813fc50df63e672
-  - enabled: 0
+  - enabled: 1
     path: Assets/Develop/hyeonji/00.Scene/Loading.unity
     guid: 5ad89a523d9238f459282a8c43936254
   - enabled: 0

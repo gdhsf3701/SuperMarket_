@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,8 +19,6 @@ public class Change : MonoBehaviour
 
     [SerializeField]
     PlayerMovement movement;
-
-    private PrefabOverride _prefabOverride;
 
     private MeshRenderer _material;
     private Material[] _defaltMaterial;
